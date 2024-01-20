@@ -1,0 +1,29 @@
+{
+  "name": "websocket",
+  "version": "1.0.0",
+  "description": "exploring websockets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd ./frontend && npm run dev",
+    "server": "cd ./backend && node server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/K-ash-ish/websocket.git"
+  },
+  "keywords": [
+    "websocket",
+    "realtime"
+  ],
+  "author": "kashish",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/K-ash-ish/websocket/issues"
+  },
+  "homepage": "https://github.com/K-ash-ish/websocket#readme",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
