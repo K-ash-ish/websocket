@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/K-ash-ish/websocket.git"
+    "url": "https://github.com/K-ash-ish/websocket.git"
   },
   "keywords": [
     "websocket",

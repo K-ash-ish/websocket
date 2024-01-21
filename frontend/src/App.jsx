@@ -1,31 +1,9 @@
 import { useState } from "react";
+import useWebSocket from "./hooks/useWebSocket";
 
 function App() {
-  const [ws, setWs] = useState("");
   const [message, setMessage] = useState("");
-  const openConnection = () => {
-    const openWs = new WebSocket("ws://localhost:3000");
-    openWs.addEventListener("error", () => {
-      console.log("Error From openWs : ");
-    });
-
-    openWs.addEventListener("open", () => {
-      console.log("WebSocket connection open");
-    });
-    openWs.addEventListener("close", () => {
-      console.log("WebSocket connection close");
-    });
-    openWs.addEventListener("message", (msg) => {
-      console.log("message:", msg, msg.data);
-    });
-    setWs(openWs);
-  };
-  const closeConnection = () => {
-    ws.close();
-  };
-  const sendMessage = () => {
-    ws.send(message);
-  };
+  const { openConnection, closeConnection, sendMessage } = useWebSocket();
 
   return (
     <div>
@@ -40,7 +18,7 @@ function App() {
             onChange={(e) => setMessage(e.target.value)}
           />
 
-          <button onClick={sendMessage}>Send</button>
+          <button onClick={() => sendMessage(message)}>Send</button>
         </div>
         <div>Messages: </div>
       </div>
