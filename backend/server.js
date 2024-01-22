@@ -38,16 +38,16 @@ wss.on("connection", (ws, req) => {
   console.log(clientWsConnections, ws.id);
   ws.on("error", onSocketPostError);
   ws.on("message", (message, isBinary) => {
-    wss.clients.forEach((client) => {
-      if (client.readyState === WebSocket.OPEN) {
-        console.log(client);
-      }
-    });
+    // wss.clients.forEach((client) => {
+    //   if (client.readyState === WebSocket.OPEN) {
+    //     console.log(client);
+    //   }
+    // });
     clientWsConnections.forEach((client) => {
       console.log(client);
-      if (client.id === 1 && client.readyState === WebSocket.OPEN) {
+      if (client.id === 1 && client.socket.readyState === WebSocket.OPEN) {
         console.log("in");
-        client.send(message);
+        client.socket.send(message, { binary: isBinary });
       }
     });
     console.log("message: ", message.toString());
